@@ -1,0 +1,15 @@
+[Unit]
+Description=Node Exporter
+
+[Service]
+NotifyAccess=all
+Restart=always
+StartLimitBurst=3
+StartLimitInterval=10s
+RestartSec=2s
+WorkingDirectory=/opt/prometheus/node_exporter/
+#EnvironmentFile=/etc/sysconfig/node_exporter
+ExecStart=/opt/prometheus/node_exporter/node_exporter --web.listen-address=:9101
+
+[Install]
+WantedBy=multi-user.target
