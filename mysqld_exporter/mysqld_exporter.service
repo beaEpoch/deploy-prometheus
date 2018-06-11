@@ -1,0 +1,16 @@
+[Unit]
+Description=prometheus mysqld_exporter
+
+[Service]
+Type=simple
+Restart=always
+StartLimitBurst=3
+StartLimitInterval=10s
+RestartSec=2s
+WorkingDirectory=/opt/prometheus/mysqld_exporter/
+#EnvironmentFile=/etc/default/prometheus-mysqld_exporter
+ExecStart=/opt/prometheus/mysqld_exporter/mysqld_exporter
+
+[Install]
+WantedBy=multi-user.target
+
