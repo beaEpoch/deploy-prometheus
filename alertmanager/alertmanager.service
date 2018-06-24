@@ -1,0 +1,16 @@
+[Unit]
+Description=Prometheus Alertmanager.
+After=network.target
+
+[Service]
+Restart=always
+StartLimitBurst=3
+StartLimitInterval=10s
+RestartSec=2s
+WorkingDirectory=/opt/prometheus/alertmanager/
+ExecStart=/opt/prometheus/alertmanager/alertmanager \
+                --config.file=/opt/prometheus/alertmanager/alertmanager.yml \
+                --storage.path=/opt/prometheus/alertmanager/data/
+
+[Install]
+WantedBy=multi-user.target

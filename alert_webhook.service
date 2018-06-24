@@ -1,0 +1,14 @@
+[Unit]
+Description=prometheus alert_webhook
+
+[Service]
+Type=simple
+Restart=always
+StartLimitBurst=3
+StartLimitInterval=10s
+RestartSec=2s
+WorkingDirectory=/opt/prometheus/alert_webhook/
+ExecStart=/opt/prometheus/alert_webhook/alert_webhook
+
+[Install]
+WantedBy=multi-user.target
