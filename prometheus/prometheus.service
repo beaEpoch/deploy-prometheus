@@ -1,0 +1,19 @@
+[Unit]
+Description=Prometheus Server
+After=network-online.target
+
+[Service]
+#Type=notify
+#NotifyAccess=all
+Restart=always
+StartLimitBurst=3
+StartLimitInterval=60s
+RestartSec=2s
+WorkingDirectory=/opt/prometheus/prometheus/
+ExecStart=/opt/prometheus/prometheus/prometheus \
+                                --config.file=/opt/prometheus/prometheus/prometheus.yml \
+                                --storage.tsdb.path=/opt/prometheus/prometheus/data/ \
+                                --web.listen-address=127.0.0.1:9090
+
+[Install]
+WantedBy=multi-user.target
