@@ -1,0 +1,13 @@
+[Unit]
+Description=Redis Exporter
+
+[Service]
+Restart=always
+StartLimitBurst=3
+StartLimitInterval=10s
+RestartSec=2s
+WorkingDirectory=/opt/prometheus/redis_exporter/
+ExecStart=/opt/prometheus/redis_exporter/redis_exporter
+
+[Install]
+WantedBy=multi-user.target
