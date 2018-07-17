@@ -1,0 +1,13 @@
+[Unit]
+Description=Postgres Exporter
+
+[Service]
+Restart=always
+StartLimitBurst=3
+StartLimitInterval=10s
+RestartSec=2s
+WorkingDirectory=/opt/prometheus/postgres_exporter/
+ExecStart=/opt/prometheus/postgres_exporter/postgres_exporter
+
+[Install]
+WantedBy=multi-user.target
