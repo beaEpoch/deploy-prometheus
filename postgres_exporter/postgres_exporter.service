@@ -6,8 +6,10 @@ Restart=always
 StartLimitBurst=3
 StartLimitInterval=10s
 RestartSec=2s
+Environment="DATA_SOURCE_NAME=postgresql://postgres_exporter:passwd@localhost:5432/postgres?sslmode=disable"
 WorkingDirectory=/opt/prometheus/postgres_exporter/
-ExecStart=/opt/prometheus/postgres_exporter/postgres_exporter
+ExecStart=/opt/prometheus/postgres_exporter/postgres_exporter \
+			--extend.query-path=queries.yml
 
 [Install]
 WantedBy=multi-user.target
