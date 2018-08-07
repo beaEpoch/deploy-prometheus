@@ -7,7 +7,9 @@ StartLimitBurst=3
 StartLimitInterval=10s
 RestartSec=2s
 WorkingDirectory=/opt/prometheus/redis_exporter/
-ExecStart=/opt/prometheus/redis_exporter/redis_exporter
+ExecStart=/opt/prometheus/redis_exporter/redis_exporter \
+                                -redis.addr 0.0.0.0:6379 \
+                                -redis.password redis
 
 [Install]
 WantedBy=multi-user.target
